@@ -19,6 +19,9 @@
 				<li><a href="http://www.../news">News</a></li>
 				<li><a href="http://www.../contact">Contact</a></li>
 			</ul>
+			<ul id="time">
+				<li><%= Time.now.strftime("%d/%m/%Y %H:%M") %></li>
+			</ul>
 		</div>
 		<div id="main">
 			<%= yield %>
