@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   get 'store/index'
 
   resources :products
+  
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -18,6 +20,10 @@ root to: 'store#index', as: 'store'
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
+    resources :line_items do
+    put 'decrease', on: :member
+    put 'increase', on: :member
+  end
 
   # Example resource route with options:
   #   resources :products do
