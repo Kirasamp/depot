@@ -42,6 +42,43 @@ class LineItemsController < ApplicationController
     end
   end
 
+  # PUT /line_items/1
+    # PUT /line_items/1.json
+    def decrease
+      @cart = current_cart
+      @line_item = @cart.decrease(params[:id])
+
+      respond_to do |format|
+        if @line_item.save
+          format.html { redirect_to store_path, notice: 'Line item removed' }
+          format.js   { @current_item = @line_item }
+          format.json { head :ok }
+        else
+          format.html {render action: "edit" }
+          format.json { render json: @line_item.errors, status: unprocessable_entity }
+        end
+      end
+    end
+
+    # PUT /line_items/1
+    # PUT /line_items/1.json
+    def increase
+      @cart = current_cart
+      @line_item = @cart.increase(params[:id])
+
+      respond_to do |format|
+        if @line_item.save
+          format.html { redirect_to store_path, notice: 'Line item added' }
+          format.js   { @current_item = @line_item }
+          format.json { head :ok }
+        else
+          format.html { render action: "edit"}
+          format.json {render json: @line_item.errors, status: unprocessable_entity }
+        end
+      end
+    end
+    
+
   # PATCH/PUT /line_items/1
   # PATCH/PUT /line_items/1.json
   def update
