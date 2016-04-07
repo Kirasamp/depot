@@ -13,9 +13,6 @@
 	</div>
 	<div id="columns">
 		<div id="side">
-			<div id="cart">
-				<%= render @cart %>
-			</div>
 
 			<ul>
 				<li><a href="http://www...">Home</a></li>
@@ -26,6 +23,11 @@
 			<ul id="time">
 				<li><%= Time.now.strftime("%d/%m/%Y %H:%M") %></li>
 			</ul>
+
+			<div id="cart">
+				<%= render @cart %>
+			</div>
+
 		</div>
 		<div id="main">
 			<%= yield %>
